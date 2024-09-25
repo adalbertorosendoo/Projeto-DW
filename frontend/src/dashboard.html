@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página Inicial</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles.global.css">
+</head>
+
+<body class="bg-body-tertiary bg-gradient">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Acronis Backup</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" href="/dashboard"><i class="bi bi-house"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/backup"><i class="bi bi-cloud-upload"></i> Backup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history"><i class="bi bi-clock-history"></i> Histórico de
+                            Arquivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/server_files"><i class="bi bi-box-seam"></i> Arquivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="bi bi-person-circle"></i>
+                            &nbsp;Olá, <span class="fw-bold" id="username"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Botão de logout -->
+                        <a class="nav-link fw-bold text-danger" id="logout" href="#"><i
+                                class="bi bi-box-arrow-right"></i>
+                            Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Visão Geral</h1>
+            <!-- Alerta de erro-->
+            <div id="alert-area"></div>
+        </div>
+
+        <!-- Backup Stats -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total de Backups</h5>
+                        <p class="card-text" id="totalUploads"><i class="bi bi-cloud-upload text-info"></i> 150</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center" id="backup-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Backups bem-sucedidos</h5>
+                        <p class="card-text" id="totalSuccess"><i class="bi bi-check-circle text-success"></i> 140</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center" id="backup-failed">
+                    <div class="card-body">
+                        <h5 class="card-title">Backups falhados</h5>
+                        <p class="card-text" id="totalFailed"><i class="bi bi-x-circle text-danger"></i> 10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Uso de armazenamento</h5>
+                        <p class="card-text" id="diskInfo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Backups Table -->
+        <h2 class="mt-4">Top 6 Atividades Recentes</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome do Arquivo</th>
+                        <th>Tamanho</th>
+                        <th>Realizado em</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="filesTable">
+                    <!-- Linhas da tabela são inseridas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Custon JS -->
+    <script type="module" src="/js/logout.js"></script>
+    <script type="module" src="/js/dashboard.js"></script>
+</body>
+
+</html>
