@@ -267,7 +267,8 @@ docker-compose down
    * Baixe e instale o Vagrant de acordo com o sistema operacional.
 3. Configurando o Vagrant:
    * No diretório do projeto, crie o arquivo Vagrantfile com a seguinte configuração:
-'''bash
+
+```bash
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -312,31 +313,31 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "./data", "/home/vagrant/data"
 
 end
-'''
+```
 
 4. Inicializando a máquina virtual com Vagrant:
    * No diretório do projeto, execute o seguinte comando para iniciar a máquina virtual:
-'''bash
+```bash
 vagrant up
-'''
+```
 
 5. Conectando-se à máquina virtual:
    * Para acessar a máquina virtual via SSH, use o comando:
-'''bash
+```bash
 vagrant ssh
-'''
+```
 
 6. Encerrando a máquina virtual:
    * Quando não precisar mais da máquina virtual, você pode pará-la com:
-'''bash
+```bash
 vagrant halt
-'''
+```
 
 7. Destruindo a máquina virtual (opcional):
    * Para remover completamente a máquina virtual criada, use:
-'''bash
+```bash
 vagrant destroy
-'''
+```
 
 ### Fontes:
 
