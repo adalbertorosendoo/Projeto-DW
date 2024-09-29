@@ -250,6 +250,94 @@ http://localhost:3000
 docker-compose down
 ```
 
+### Executando a aplicação usando VirtualBox e Vagrant
+
+- Caso você prefira utilizar uma máquina virtual para rodar o projeto, siga as instruções abaixo para configurar o ambiente utilizando VirtualBox e Vagrant.
+
+- Pré-requisitos:
+
+* VirtualBox
+* Vagrant
+
+- Passos para execução com VirtualBox e Vagrant:
+1. Instale o VirtualBox:
+   * Acesse o site oficial do VirtualBox e baixe a versão apropriada para o seu sistema operacional.
+   * Siga o guia de instalação fornecido pela página de download.
+2. Instale o Vagrant:
+   * Baixe e instale o Vagrant de acordo com o sistema operacional.
+3. Configurando o Vagrant:
+   * No diretório do projeto, crie o arquivo Vagrantfile com a seguinte configuração:
+'''bash
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # Usando a box do Debian Bullseye (Debian 11)
+  config.vm.box = "debian/bullseye64"
+  config.vm.network "public_network"
+
+  # Configurando a VM (ajuste conforme necessário)
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"  # Memória em MB
+    vb.cpus = 2         # Número de CPUs
+  end
+
+  # Configurando o nome da máquina
+  config.vm.hostname = "debian-servidor"
+
+  # Provisionamento para instalar OpenSSH, criar usuário e ajustar SSH
+  config.vm.provision "shell", inline: <<-SHELL
+    # Atualiza a lista de pacotes
+    apt-get update
+    
+    # Instala o OpenSSH Server
+    apt-get install -y openssh-server
+
+    # Cria o usuário 'acronis' com a senha 'senhaforte'
+    useradd -m -s /bin/bash acronis
+    echo "acronis:senhaforte" | chpasswd
+
+    # Adiciona o usuário 'acronis' ao grupo 'sudo'
+    usermod -aG sudo acronis
+
+    # Permite o login por senha via SSH
+    sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+    systemctl restart ssh
+  SHELL
+  
+  # config.vm.network "forwarded_port", guest: 22, host: 2222
+
+  # Configurando pasta sincronizada (opcional)
+  # config.vm.synced_folder "./data", "/home/vagrant/data"
+
+end
+'''
+
+4. Inicializando a máquina virtual com Vagrant:
+   * No diretório do projeto, execute o seguinte comando para iniciar a máquina virtual:
+'''bash
+vagrant up
+'''
+
+5. Conectando-se à máquina virtual:
+   * Para acessar a máquina virtual via SSH, use o comando:
+'''bash
+vagrant ssh
+'''
+
+6. Encerrando a máquina virtual:
+   * Quando não precisar mais da máquina virtual, você pode pará-la com:
+'''bash
+vagrant halt
+'''
+
+7. Destruindo a máquina virtual (opcional):
+   * Para remover completamente a máquina virtual criada, use:
+'''bash
+vagrant destroy
+'''
+
 ### Fontes:
 
 - [Express.js](https://expressjs.com/)
