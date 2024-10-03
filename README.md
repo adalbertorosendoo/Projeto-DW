@@ -1,8 +1,8 @@
 # ACRONIS BACKUP
 
-A aplicação Acronis Backup é um projeto desenvolvido para a disciplina de Desenvolvimento Web, do curso de Redes de Computadores do Instituto Federal da Paraíba - IFPB. O objetivo do projeto é desenvolver uma aplicação web que permita o cadastro e autenticação de usuários onde um cada usuário terá um diretório com seu nome de usuário dentro do servidor de backup. Este serveidor deve ter suas credencias de acesso definidas pelo administrador do sistema dentro do arquivo .env do backend da aplicação.
+A aplicação Acronis Backup é um projeto desenvolvido para a disciplina de Desenvolvimento Web, do curso de Redes de Computadores do Instituto Federal da Paraíba - IFPB. O objetivo do projeto é desenvolver uma aplicação web que permita o cadastro e autenticação de usuários onde cada usuário terá um diretório com seu nome de usuário dentro do servidor de backup. Este serveidor deve ter suas credencias de acesso definidas pelo administrador do sistema dentro do arquivo .env do backend da aplicação.
 
-O servidor de utilizado para backup deve ter o serviço SSH habilitado e o usuário de conexão deve ter permissão de escrita no diretório de backup. O servidor de backup pode ser um servidor local ou um servidor remoto, desde que o mesmo esteja acessível na rede. Todos os arquivos serão enviador por meio do protocolo SFTP (SSH File Transfer Protocol).
+O servidor utilizado para backup deve ter o serviço SSH habilitado e o usuário de conexão deve ter permissão de escrita no diretório de backup. O servidor de backup pode ser um servidor local ou um servidor remoto, desde que o mesmo esteja acessível na rede. Todos os arquivos serão enviados por meio do protocolo SFTP (SSH File Transfer Protocol).
 
 ### Página de login da aplicação:
 
